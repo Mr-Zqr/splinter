@@ -38,8 +38,12 @@ public:
     void addSample(double x, double y);
     void addSample(std::vector<double> x, double y);
     void addSample(DenseVector x, double y);
-    void addSample(std::initializer_list<DataPoint> samples);
 
+
+    void removeSample(double x, double y);
+    void removeSample(std::vector<double> x, double y);
+    void removeSample(DenseVector x, double y);
+    void removeSample(const DataPoint &sample);
     /*
      * Getters
      */
@@ -71,6 +75,8 @@ private:
     unsigned int getNumSamplesRequired() const;
 
     void recordGridPoint(const DataPoint &sample);
+
+    void unrecordGridPoint(const DataPoint &sample);
 
     // Used by functions that require the grid to be complete before they start their operation
     // This function prints a message and exits the program if the grid is not complete.
